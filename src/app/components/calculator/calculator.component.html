@@ -1,0 +1,192 @@
+<div class="calculator-container">
+  <div class="calculator-wrapper">
+    <div class="calculator-header">
+      <h1>Calculator</h1>
+      <button class="history-button" (click)="toggleSidebar()" aria-label="Open history">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 12h18M3 6h18M3 18h18"></path>
+        </svg>
+      </button>
+    </div>
+    
+    <app-calculator-display
+      [expression]="calculatorService.displayExpression()"
+      [value]="calculatorService.displayValue()"
+      [memoryValue]="calculatorService.memoryValue()">
+    </app-calculator-display>
+
+    <div class="calculator-buttons">
+      <!-- Memory Row -->
+      <div class="button-row">
+        <app-calculator-button
+          label="MC"
+          type="memory"
+          (buttonClick)="onMemoryClear()"
+          [disabled]="calculatorService.memoryValue() === 0">
+        </app-calculator-button>
+        <app-calculator-button
+          label="MR"
+          type="memory"
+          (buttonClick)="onMemoryRecall()"
+          [disabled]="calculatorService.memoryValue() === 0">
+        </app-calculator-button>
+        <app-calculator-button
+          label="M+"
+          type="memory"
+          (buttonClick)="onMemoryAdd()">
+        </app-calculator-button>
+        <app-calculator-button
+          label="M-"
+          type="memory"
+          (buttonClick)="onMemorySubtract()">
+        </app-calculator-button>
+        <app-calculator-button
+          label="MS"
+          type="memory"
+          (buttonClick)="onMemoryStore()">
+        </app-calculator-button>
+      </div>
+
+      <!-- Function Row -->
+      <div class="button-row">
+        <app-calculator-button
+          label="%"
+          type="function"
+          (buttonClick)="onOperatorClick('%')">
+        </app-calculator-button>
+        <app-calculator-button
+          label="CE"
+          type="function"
+          (buttonClick)="onClearEntryClick()">
+        </app-calculator-button>
+        <app-calculator-button
+          label="C"
+          type="function"
+          (buttonClick)="onClearClick()">
+        </app-calculator-button>
+        <app-calculator-button
+          label="⌫"
+          type="function"
+          (buttonClick)="onBackspaceClick()">
+        </app-calculator-button>
+        <app-calculator-button
+          label="÷"
+          type="operator"
+          (buttonClick)="onOperatorClick('÷')">
+        </app-calculator-button>
+      </div>
+
+      <!-- Number and Operator Rows -->
+      <div class="button-row">
+        <app-calculator-button
+          label="7"
+          type="number"
+          (buttonClick)="onNumberClick('7')">
+        </app-calculator-button>
+        <app-calculator-button
+          label="8"
+          type="number"
+          (buttonClick)="onNumberClick('8')">
+        </app-calculator-button>
+        <app-calculator-button
+          label="9"
+          type="number"
+          (buttonClick)="onNumberClick('9')">
+        </app-calculator-button>
+        <app-calculator-button
+          label="×"
+          type="operator"
+          (buttonClick)="onOperatorClick('×')">
+        </app-calculator-button>
+        <app-calculator-button
+          label="±"
+          type="function"
+          (buttonClick)="onToggleSignClick()">
+        </app-calculator-button>
+      </div>
+
+      <div class="button-row">
+        <app-calculator-button
+          label="4"
+          type="number"
+          (buttonClick)="onNumberClick('4')">
+        </app-calculator-button>
+        <app-calculator-button
+          label="5"
+          type="number"
+          (buttonClick)="onNumberClick('5')">
+        </app-calculator-button>
+        <app-calculator-button
+          label="6"
+          type="number"
+          (buttonClick)="onNumberClick('6')">
+        </app-calculator-button>
+        <app-calculator-button
+          label="-"
+          type="operator"
+          (buttonClick)="onOperatorClick('-')">
+        </app-calculator-button>
+        <app-calculator-button
+          label="√"
+          type="function"
+          (buttonClick)="onSquareRootClick()">
+        </app-calculator-button>
+      </div>
+
+      <div class="button-row">
+        <app-calculator-button
+          label="1"
+          type="number"
+          (buttonClick)="onNumberClick('1')">
+        </app-calculator-button>
+        <app-calculator-button
+          label="2"
+          type="number"
+          (buttonClick)="onNumberClick('2')">
+        </app-calculator-button>
+        <app-calculator-button
+          label="3"
+          type="number"
+          (buttonClick)="onNumberClick('3')">
+        </app-calculator-button>
+        <app-calculator-button
+          label="+"
+          type="operator"
+          (buttonClick)="onOperatorClick('+')">
+        </app-calculator-button>
+        <app-calculator-button
+          label="x²"
+          type="function"
+          (buttonClick)="onSquareClick()">
+        </app-calculator-button>
+      </div>
+
+      <div class="button-row">
+        <app-calculator-button
+          label="0"
+          type="number"
+          (buttonClick)="onNumberClick('0')">
+        </app-calculator-button>
+        <app-calculator-button
+          label="."
+          type="number"
+          (buttonClick)="onDecimalClick()">
+        </app-calculator-button>
+        <app-calculator-button
+          label="="
+          type="equals"
+          (buttonClick)="onEqualsClick()">
+        </app-calculator-button>
+      </div>
+    </div>
+  </div>
+
+  <app-history-sidebar
+    [isOpen]="isSidebarOpen()"
+    [history]="historyList()"
+    (closeSidebar)="closeSidebar()"
+    (clearHistory)="onClearHistory()"
+    (selectEntry)="onHistoryEntrySelect($event)">
+  </app-history-sidebar>
+</div>
+

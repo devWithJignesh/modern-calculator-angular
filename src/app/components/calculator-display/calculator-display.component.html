@@ -1,0 +1,11 @@
+<div class="calculator-display">
+  @if (memoryValue() !== 0) {
+    <div class="memory-indicator">
+      <span class="memory-label">M</span>
+      <span class="memory-value">{{ memoryValue() | number:'1.0-10' }}</span>
+    </div>
+  }
+  <div class="expression">{{ expression() }}</div>
+  <div class="value">{{ value() }}</div>
+</div>
+

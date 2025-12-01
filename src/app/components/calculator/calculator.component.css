@@ -1,0 +1,115 @@
+.calculator-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.calculator-wrapper {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.calculator-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: #f5f5f5;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.calculator-header h1 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 500;
+  color: #1e1e1e;
+}
+
+.history-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  color: #666;
+  transition: background 0.2s ease;
+}
+
+.history-button:hover {
+  background: #e0e0e0;
+}
+
+.calculator-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  background: #ffffff;
+}
+
+.button-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+}
+
+.button-row:last-child {
+  grid-template-columns: 2fr 1fr 2fr;
+}
+
+.button-row:last-child app-calculator-button:first-child {
+  grid-column: 1 / 2;
+}
+
+.button-row:last-child app-calculator-button:nth-child(2) {
+  grid-column: 2 / 3;
+}
+
+.button-row:last-child app-calculator-button:last-child {
+  grid-column: 3 / 6;
+}
+
+@media (max-width: 480px) {
+  .calculator-container {
+    padding: 10px;
+  }
+
+  .calculator-wrapper {
+    max-width: 100%;
+    border-radius: 8px;
+  }
+
+  .calculator-buttons {
+    padding: 12px;
+    gap: 6px;
+  }
+
+  .button-row {
+    gap: 6px;
+  }
+}
+
+@media (max-width: 360px) {
+  .calculator-buttons {
+    padding: 8px;
+    gap: 4px;
+  }
+
+  .button-row {
+    gap: 4px;
+  }
+}
+

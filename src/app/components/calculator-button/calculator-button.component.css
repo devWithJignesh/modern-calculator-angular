@@ -1,0 +1,142 @@
+.calc-button {
+  width: 100%;
+  height: 100%;
+  min-height: 60px;
+  border: none;
+  border-radius: 4px;
+  font-size: 20px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  position: relative;
+  overflow: hidden;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.calc-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translate(-50%, -50%);
+  transition: width 0.3s, height 0.3s;
+}
+
+.calc-button:active::before {
+  width: 300px;
+  height: 300px;
+}
+
+.calc-button--number {
+  background: #f0f0f0;
+  color: #1e1e1e;
+}
+
+.calc-button--number:hover:not(:disabled) {
+  background: #e0e0e0;
+}
+
+.calc-button--number:active:not(:disabled) {
+  background: #d0d0d0;
+}
+
+.calc-button--operator {
+  background: #e0e0e0;
+  color: #1e1e1e;
+  font-weight: 500;
+}
+
+.calc-button--operator:hover:not(:disabled) {
+  background: #d0d0d0;
+}
+
+.calc-button--operator:active:not(:disabled) {
+  background: #c0c0c0;
+}
+
+.calc-button--function {
+  background: #d0d0d0;
+  color: #1e1e1e;
+  font-size: 18px;
+}
+
+.calc-button--function:hover:not(:disabled) {
+  background: #c0c0c0;
+}
+
+.calc-button--function:active:not(:disabled) {
+  background: #b0b0b0;
+}
+
+.calc-button--equals {
+  background: #0078d4;
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 24px;
+}
+
+.calc-button--equals:hover:not(:disabled) {
+  background: #006cbe;
+}
+
+.calc-button--equals:active:not(:disabled) {
+  background: #005a9e;
+}
+
+.calc-button--memory {
+  background: #f0f0f0;
+  color: #0078d4;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.calc-button--memory:hover:not(:disabled) {
+  background: #e0e0e0;
+}
+
+.calc-button--memory:active:not(:disabled) {
+  background: #d0d0d0;
+}
+
+.calc-button--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.button-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+}
+
+.button-label {
+  display: inline-block;
+}
+
+@media (max-width: 480px) {
+  .calc-button {
+    min-height: 50px;
+    font-size: 18px;
+  }
+
+  .calc-button--equals {
+    font-size: 20px;
+  }
+
+  .calc-button--function {
+    font-size: 16px;
+  }
+}
+
