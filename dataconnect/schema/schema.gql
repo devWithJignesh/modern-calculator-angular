@@ -1,0 +1,27 @@
+type User @table {
+  displayName: String
+  email: String
+  createdAt: Timestamp
+  lastLogin: Timestamp
+}
+
+type Calculation @table {
+  user: User
+  expression: String!
+  result: Float!
+  createdAt: Timestamp!
+}
+
+type MemorySlot @table {
+  user: User
+  value: Float!
+  slotIndex: Int!
+  updatedAt: Timestamp!
+}
+
+type Setting @table {
+  user: User
+  key: String!
+  value: String!
+  updatedAt: Timestamp!
+}

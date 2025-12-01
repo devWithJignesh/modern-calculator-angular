@@ -1,0 +1,25 @@
+mutation CreateUserMutation($displayName: String!, $email: String!) @auth(level: USER) {
+  user_insert(data: {displayName: $displayName, email: $email, createdAt_expr: "request.time"})
+}
+
+query GetUserSettingsQuery @auth(level: USER) {
+  settings(where: {userId: {eq_expr: "auth.uid"}}) {
+    key
+    value
+  }
+}
+
+mutation UpdateMemorySlotMutation($slotIndex: Int!, $value: Float!) @auth(level: USER) {
+  memorySlot_updateMany(where: {userId: {eq_expr: "auth.uid"}, slotIndex: {eq: $slotIndex}}, data: {value: $value, updatedAt_expr: "request.time"}) {
+    _count
+  }
+}
+
+query ListCalculations @auth(level: USER) {
+  calculations(where: {userId: {eq_expr: "auth.uid"}}, orderBy: [{createdAt: DESC}], limit: 10) {
+    id
+    expression
+    result
+    createdAt
+  }
+}
